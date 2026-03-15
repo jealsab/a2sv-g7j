@@ -1,0 +1,24 @@
+from typing import List
+
+class Solution:
+    def maximumUniqueSubarray(self, nums: List[int]) -> int:
+        pos = {}    
+        l = 0       
+        curr = 0    
+        total = 0   
+
+        for r in range(len(nums)):
+        
+            if nums[r] in pos and pos[nums[r]] >= l:
+                while l <= pos[nums[r]]:
+                    curr -= nums[l]
+                    l += 1
+
+           
+            curr += nums[r]
+            pos[nums[r]] = r
+
+    
+            total = max(total, curr)
+
+        return total
