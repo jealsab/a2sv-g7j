@@ -1,0 +1,31 @@
+class Solution:
+    def minimumRecolors(self, blocks: str, k: int) -> int:
+        l = 0
+        min_w = float("inf")
+        freq = {}
+
+        for r in range(len(blocks)):
+
+            if blocks[r] not in freq:
+                freq[blocks[r]] = 0
+            freq[blocks[r]] += 1
+
+            if r - l + 1 == k:
+                if "W" in freq:
+                    min_w = min(min_w, freq["W"])
+                else:
+                    min_w = min(min_w, 0)
+
+                freq[blocks[l]] -= 1
+                if freq[blocks[l]] == 0:
+                    del freq[blocks[l]]
+
+                l += 1
+
+        return min_w
+                
+
+                    
+
+
+                    
