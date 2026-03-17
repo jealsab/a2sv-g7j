@@ -5,9 +5,12 @@ class NumArray:
         self.arr=[0]
         
         for i in range(len(nums)):
+           
             self.arr.append(nums[i]+self.arr[-1])
+           
 
     def sumRange(self, left: int, right: int) -> int:
+      
         return self.arr[right+1]-self.arr[left]
         
 
