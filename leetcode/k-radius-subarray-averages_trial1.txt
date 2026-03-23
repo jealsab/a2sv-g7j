@@ -1,0 +1,11 @@
+class Solution:
+    def getAverages(self, nums: List[int], k: int) -> List[int]:
+        
+        res = [-1]*len(nums)
+
+        curWindowSum = sum(nums[:2*k])
+        for i in range(k, len(nums)-k):
+            curWindowSum += nums[i+k]
+            res[i] = curWindowSum//(2*k+1)
+            curWindowSum -= nums[i-k]
+        return res
